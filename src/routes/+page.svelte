@@ -238,6 +238,12 @@
 	const brands = Array.from(new Set(cars.map((car) => car.brand)));
 </script>
 
+<!-- Main Title -->
+<section class="p-4">
+	<h1 class="text-2xl font-bold text-gray-800 sm:text-3xl font-serif">
+		Apis special selection
+	</h1>
+</section>
 <!-- Brand Filter Buttons -->
 <section class="flex flex-wrap gap-2 bg-gray-50 p-4">
 	<h2 class="w-full font-semibold">Brand Filter</h2>
