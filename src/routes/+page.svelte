@@ -215,6 +215,66 @@
 			engine: { displacement: 1.5, cylinders: 4, hp: 180, nm: 240 },
 			warranty: true,
 			features: ['Left-lane Watch', 'BSM', '3 Drive-mode']
+		},
+		{
+			id: 11,
+			condition: 'Recon',
+			brand: 'Mercedes',
+			year: 2020,
+			model: 'CLA180',
+			type: 'Wagon',
+			seats: 5,
+			price: 149000,
+			fuel: 'Petrol',
+			fuel_consumption: '5.5l/100km',
+			mileage: '45-50K (KM)',
+			img: '/image/mercedes-cla180.jpg',
+			link: 'https://www.carlist.my/recon-cars/unregister-2020-mercedes-benz-cla180-1-3t-shooting-brake-semi-leather-reverse-camera-lane-tracing-assist-pre-crash-system-power-boot-paddle-shift/16571614',
+			drivetrain: 'FWD',
+			wheel_size: 16,
+			engine: { displacement: 1.3, cylinders: 4, hp: 136, nm: 200 },
+			warranty: true,
+			features: ['Keyless-entry', 'Park Assist', 'Dynamic Drive Mode', 'Power Boot', 'BSM']
+		},
+		{
+			id: 12,
+			condition: 'New',
+			brand: 'Chery',
+			year: 2025,
+			model: 'Tiggo 7 Pro',
+			type: 'SUV',
+			seats: 5,
+			price: 109800,
+			fuel: 'Petrol',
+			fuel_consumption: '7.0l/100km',
+			mileage: '0 (KM)',
+			img: '/image/chery-tiggo7.jpg',
+			link: 'https://www.carlist.my/new-cars/2025-chery-tiggo-7-pro-1-6-limited-unit/17856076',
+			drivetrain: 'FWD',
+			wheel_size: 18,
+			engine: { displacement: 1.6, cylinders: 4, hp: 197, nm: 290 },
+			warranty: true,
+			features: ['Panoramic Roof', '360 Camera', '3-Drive Mode', 'Power Boot']
+		},
+		{
+			id: 13,
+			condition: 'New',
+			brand: 'Chery',
+			year: 2025,
+			model: 'Tiggo 8 Pro',
+			type: 'SUV',
+			seats: 7,
+			price: 143800,
+			fuel: 'Petrol',
+			fuel_consumption: '7.4l/100km',
+			mileage: '0 (KM)',
+			img: '/image/chery-tiggo8.jpg',
+			link: 'https://www.carlist.my/new-cars/2025-chery-tiggo-8-pro-2-0-premium-a-high-cash-rebates-up-to-rm16-000-ready-stock-free-gifts/15264683',
+			drivetrain: 'FWD',
+			wheel_size: 19,
+			engine: { displacement: 2.0, cylinders: 4, hp: 256, nm: 390 },
+			warranty: true,
+			features: ['Hands-free Power Boot', 'Panoramic Roof', 'Wireless Phone Charging', '540 HD Panoramic Camera', 'BSM']
 		}
 	];
 	let sortOrder: 'high' | 'low' = 'high';
@@ -227,16 +287,14 @@
 	let selectedForCompare: number[] = [];
 	let selectedBrand: string | null = null;
 
-	// const toggleCompare = (id: number) => {
-	// 	if (selectedForCompare.includes(id)) {
-	// 		selectedForCompare = selectedForCompare.filter((x) => x !== id);
-	// 	} else {
-	// 		selectedForCompare.push(id);
-	// 	}
-	// };
+
 
 	const brands = Array.from(new Set(cars.map((car) => car.brand)));
 </script>
+
+<svelte:head>
+	<title>Apis Special Selection</title>
+</svelte:head>
 
 <!-- Main Title -->
 <section class="p-4">
@@ -252,7 +310,7 @@
 			class={`flex items-center gap-1 rounded-sm px-3 py-1 text-sm
         ${
 					selectedBrand === brand
-						? 'bg-blue-200 text-white hover:bg-blue-600'
+						? 'bg-blue-200 text-white hover:bg-blue-300'
 						: 'bg-gray-200 text-gray-800 hover:bg-gray-300'
 				}`}
 			onclick={() => (selectedBrand = selectedBrand === brand ? null : brand)}
