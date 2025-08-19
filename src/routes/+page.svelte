@@ -196,7 +196,7 @@
 			<div class="flex min-w-0 flex-1 flex-col justify-between">
 				<!-- Price & Mileage Row -->
 				<div class="mb-2 flex items-center justify-between">
-					<h2 class="truncate text-2xl font-bold text-green-600">
+					<h2 class="text-xl font-bold text-green-600">
 						RM{car.price.toLocaleString()}
 					</h2>
 					<p class="ml-auto pl-20 text-sm text-gray-500">Mileage: {car.mileage}</p>
@@ -204,7 +204,7 @@
 
 				<!-- Model & Condition -->
 				<div class="mb-2">
-					<h3 class="truncate text-xl font-semibold">
+					<h3 class="truncate text-lg font-semibold">
 						{car.brand}
 						{car.model} ({car.year})
 					</h3>
