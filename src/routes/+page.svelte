@@ -20,12 +20,21 @@
 			price: 183000,
 			fuel: 'Hybrid',
 			fuel_consumption: '2.3l/100km',
-			mileage: '10-15K (KM)',
+			mileage: '12K (KM)',
 			img: '/image/bmw-530e.jpg',
 			link: 'https://www.carlist.my/listings/details?id=17574198&controller=used-cars-for-sale-malaysia&slug=bmw-530e-2-0-a-m-sport-lci-original-facelift-full-service-record-12k-under-warranty-until-2027-battery-warranty-until-2030-local-bmw-unit',
 			drivetrain: 'RWD',
 			wheel_size: 19,
-			engine: { displacement: 2.0, cylinders: 4, hp: 248, nm: 350 }
+			engine: { displacement: 2.0, cylinders: 4, hp: 248, nm: 350 },
+			warranty: true,
+			features: [
+				'360 Camera',
+				'Warranty-2027',
+				'Battery Warranty-2030',
+				'Auto Park',
+				'Reverse Assist',
+				'HUD'
+			]
 		},
 		{
 			id: 2,
@@ -43,7 +52,9 @@
 			link: 'https://www.omodajaecoo.com.my/modelj7',
 			drivetrain: 'FWD',
 			wheel_size: 19,
-			engine: { displacement: 1.6, cylinders: 4, hp: 194, nm: 290 }
+			engine: { displacement: 1.6, cylinders: 4, hp: 194, nm: 290 },
+			warranty: true,
+			features: ['360 Camera', 'HUD', 'Power Boot']
 		},
 		{
 			id: 3,
@@ -59,9 +70,11 @@
 			mileage: '30-35K(KM)',
 			img: '/image/bmw-523i.jpg',
 			link: 'https://www.carlist.my/listings/details?id=17773470&controller=recon-cars-for-sale-malaysia&slug=2019-bmw-523i-2-0-m-sport-full-spec-free-6-year-warranty',
-			drivetrain: 'FWD',
+			drivetrain: 'RWD',
 			wheel_size: 19,
-			engine: { displacement: 2.0, cylinders: 4, hp: 250, nm: 290 }
+			engine: { displacement: 2.0, cylinders: 4, hp: 250, nm: 290 },
+			warranty: true,
+			features: ['360 Camera', '6-Year Warranty', 'HUD', 'BSM']
 		},
 		{
 			id: 4,
@@ -79,7 +92,9 @@
 			link: 'https://www.omodajaecoo.com.my/modelj7phev',
 			drivetrain: 'FWD',
 			wheel_size: 19,
-			engine: { displacement: 1.5, cylinders: 4, hp: 346, nm: 525 }
+			engine: { displacement: 1.5, cylinders: 4, hp: 346, nm: 525 },
+			warranty: true,
+			features: ['360 Camera', '1200KM Drive Range', 'HUD']
 		},
 		{
 			id: 5,
@@ -97,7 +112,9 @@
 			link: 'https://www.omodajaecoo.com.my/modelc9',
 			drivetrain: 'FWD',
 			wheel_size: 20,
-			engine: { displacement: 2.0, cylinders: 4, hp: 257, nm: 400 }
+			engine: { displacement: 2.0, cylinders: 4, hp: 257, nm: 400 },
+			warranty: true,
+			features: ['360 Camera', 'CDC Suspension', 'Wireless phone charge', 'Power Boot', 'HUD']
 		},
 		{
 			id: 6,
@@ -115,7 +132,9 @@
 			link: 'https://www.proton.com/en/models/protons70',
 			drivetrain: 'FWD',
 			wheel_size: 17,
-			engine: { displacement: 1.5, cylinders: 3, hp: 150, nm: 226 }
+			engine: { displacement: 1.5, cylinders: 3, hp: 150, nm: 226 },
+			warranty: true,
+			features: ['360 Camera', 'Remote Engine Start']
 		},
 		{
 			id: 7,
@@ -126,14 +145,76 @@
 			type: 'Wagon',
 			seats: 5,
 			price: 175000,
-			fuel: 'Dieesel',
+			fuel: 'Diesel',
 			fuel_consumption: '4.9l/100km',
 			mileage: '35-40K (KM)',
 			img: '/image/mercedes-cla200d.jpg',
 			link: 'https://www.carlist.my/recon-cars/2020-mercedes-benz-cla200d-2-0-amg-shooting-brake-full-spec-free-6-year-warranty/16742616',
 			drivetrain: 'FWD',
 			wheel_size: 18,
-			engine: { displacement: 2.0, cylinders: 4, hp: 150, nm: 320 }
+			engine: { displacement: 2.0, cylinders: 4, hp: 150, nm: 320 },
+			warranty: true,
+			features: ['360 Camera', '6-Year Warranty', 'HUD', 'Sunroof', 'Power Boot', 'Park Assist']
+		},
+		{
+			id: 8,
+			condition: 'Recon',
+			brand: 'Toyota',
+			year: 2021,
+			model: 'Harrier Z',
+			type: 'SUV',
+			seats: 5,
+			price: 172000,
+			fuel: 'Petrol',
+			fuel_consumption: '6.5l/100km',
+			mileage: '9K (KM)',
+			img: '/image/toyota-harrier.jpg',
+			link: 'https://www.carlist.my/recon-cars/9k-km-only-2021-toyota-harrier-2-0-z-black-interior-jbl-sound-system-360-camera-bsm-dim-full-spec-view-to-believe/17875844',
+			drivetrain: 'FWD',
+			wheel_size: 18,
+			engine: { displacement: 2.0, cylinders: 4, hp: 150, nm: 320 },
+			warranty: true,
+			features: ['360 Camera', 'BSM', 'HUD', 'Power Boot', '3 Drive-mode']
+		},
+		{
+			id: 9,
+			condition: 'New',
+			brand: 'Honda',
+			year: 2025,
+			model: 'Civic e:hev RS',
+			type: 'Sedan',
+			seats: 5,
+			price: 162900,
+			fuel: 'Hybrid',
+			fuel_consumption: '4.0l/100km',
+			mileage: '0K (KM)',
+			img: '/image/honda-civic.jpg',
+			link: 'https://www.carlist.my/new-cars/2025-honda-civic-2-0-ehev-rs-sedan-facelift-aug-merdeka-deal-7k-high-discount-max-loan-low-down-payment-door-to-door-ready-stock/13642652',
+			drivetrain: 'FWD',
+			wheel_size: 18,
+			engine: { displacement: 2.0, cylinders: 4, hp: 181, nm: 315 },
+			warranty: true,
+			features: ['Left-lane Watch', 'BSM', '3 Drive-mode']
+		},
+		{
+			id: 10,
+			condition: 'New',
+			brand: 'Honda',
+			year: 2025,
+			model: 'Civic RS',
+			type: 'Sedan',
+			seats: 5,
+			price: 149990,
+			fuel: 'Petrol',
+			fuel_consumption: '6.3l/100km',
+			mileage: '0K (KM)',
+			img: '/image/honda-civic.jpg',
+			link: 'https://www.carlist.my/new-cars/2025-honda-civic-1-5-rs-vtec-sedan-merdeka-cash-rebates-7k-stok-cepat-book-now/16135283',
+			drivetrain: 'FWD',
+			wheel_size: 18,
+			engine: { displacement: 1.5, cylinders: 4, hp: 180, nm: 240 },
+			warranty: true,
+			features: ['Left-lane Watch', 'BSM', '3 Drive-mode']
 		}
 	];
 	let sortOrder: 'high' | 'low' = 'high';
@@ -146,13 +227,13 @@
 	let selectedForCompare: number[] = [];
 	let selectedBrand: string | null = null;
 
-	const toggleCompare = (id: number) => {
-		if (selectedForCompare.includes(id)) {
-			selectedForCompare = selectedForCompare.filter((x) => x !== id);
-		} else {
-			selectedForCompare.push(id);
-		}
-	};
+	// const toggleCompare = (id: number) => {
+	// 	if (selectedForCompare.includes(id)) {
+	// 		selectedForCompare = selectedForCompare.filter((x) => x !== id);
+	// 	} else {
+	// 		selectedForCompare.push(id);
+	// 	}
+	// };
 
 	const brands = Array.from(new Set(cars.map((car) => car.brand)));
 </script>
@@ -162,7 +243,12 @@
 	<h2 class="w-full font-semibold">Brand Filter</h2>
 	{#each brands as brand}
 		<Button
-			color={selectedBrand === brand ? 'dark' : 'light'}
+			class={`flex items-center gap-1 rounded-sm px-3 py-1 text-sm
+        ${
+					selectedBrand === brand
+						? 'bg-blue-200 text-white hover:bg-blue-600'
+						: 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+				}`}
 			onclick={() => (selectedBrand = selectedBrand === brand ? null : brand)}
 			size="sm"
 		>
@@ -172,6 +258,9 @@
 			{/if} -->
 		</Button>
 	{/each}
+	{#if selectedBrand != null}
+		<Button onclick={() => (selectedBrand = null)} size="xs">Reset</Button>
+	{/if}
 </section>
 
 <!-- Sort Button -->
@@ -187,8 +276,17 @@
 <section class="flex flex-col gap-4 p-4">
 	{#each sortedCars.filter((car) => !selectedBrand || car.brand === selectedBrand) as car}
 		<Card
-			class="flex flex-col items-start gap-4 rounded-lg p-4 shadow-md transition-shadow duration-200 hover:shadow-lg sm:flex-row"
+			class="relative flex flex-col items-start gap-4 rounded-lg p-4 shadow-md transition-shadow duration-200 hover:shadow-lg sm:flex-row"
 		>
+			<!-- Warranty Badge -->
+			{#if car.warranty}
+				<span
+					class="absolute top-2 right-2 rounded-full bg-green-600 px-3 py-1 text-xs font-bold text-white shadow-md"
+				>
+					Warranty
+				</span>
+			{/if}
+
 			<!-- Car Image -->
 			<img src={car.img} alt={car.model} class="h-32 w-full rounded-lg object-contain sm:w-40" />
 
@@ -206,7 +304,8 @@
 				<div class="mb-2">
 					<h3 class="truncate text-lg font-semibold">
 						{car.brand}
-						{car.model} ({car.year})
+						{car.model}
+						{car.engine.displacement.toFixed(1)}cc ({car.year})
 					</h3>
 					<p class="mt-1 text-sm">
 						Condition:
@@ -217,17 +316,20 @@
 						</span>
 					</p>
 				</div>
+
 				<!-- Engine Info -->
 				<div class="mb-1">
 					<p class="text-sm font-semibold">Engine:</p>
 					<p class="pl-1 text-sm text-gray-700">
-						Fuel: {car.fuel} | {car.engine.displacement}cc, {car.engine.hp}HP, {car.engine.nm}Nm, {car
-							.engine.cylinders} Cylinders
+						Fuel: {car.fuel} | {car.engine.displacement}cc, {car.engine.hp}HP, {car.engine.nm}Nm,
+						{car.engine.cylinders} Cylinders
 					</p>
 				</div>
+
 				<hr />
+
 				<!-- General Info -->
-				<div class="space-y-1 my-2">
+				<div class="my-2 space-y-1">
 					<p class="flex items-center text-sm text-gray-500">
 						<Fuel class="mr-2 h-4 w-4 text-gray-600" /> Fuel: {car.fuel}
 					</p>
@@ -248,6 +350,17 @@
 					</p>
 				</div>
 
+				{#if car.features?.length}
+					<div class="my-2 flex flex-wrap gap-2">
+						{#each car.features as feature}
+							<span
+								class="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700 shadow-sm"
+							>
+								{feature}
+							</span>
+						{/each}
+					</div>
+				{/if}
 				<!-- Link -->
 				<a
 					href={car.link}
