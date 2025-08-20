@@ -1,6 +1,7 @@
 <script lang="ts">
+	import DrawerFilter from '$lib/function/DrawerFilter.svelte';
 	import { Card, Button, Checkbox } from 'flowbite-svelte';
-	import { Fuel, Cog, Car, Users, Circle, Droplet } from 'lucide-svelte';
+	import { Fuel, Cog, Car, Users, Circle, Droplet, Funnel } from 'lucide-svelte';
 
 	const conditionColors: Record<string, string> = {
 		New: 'bg-green-100 text-green-800',
@@ -286,14 +287,55 @@
 	let sortOrder: 'high' | 'low' = 'high';
 
 	// reactive sorted array
-	$: sortedCars = [...cars].sort((a, b) =>
+	$: sortedCars = [...filteredCars].sort((a, b) =>
 		sortOrder === 'high' ? b.price - a.price : a.price - b.price
 	);
 
-	let selectedForCompare: number[] = [];
 	let selectedBrand: string | null = null;
+	let isOpen = false;
+	let openFilter = false;
+	let filteredCars: any[] = [...cars];
 
 	const brands = Array.from(new Set(cars.map((car) => car.brand)));
+
+	function handleApply(filters: any) {
+		filteredCars = cars.filter((car) => {
+			// Number filters
+			if (filters.minPrice != null && car.price < filters.minPrice) return false;
+			if (filters.maxPrice != null && car.price > filters.maxPrice) return false;
+			if (filters.minMileage != null && parseMileage(car.mileage) < filters.minMileage)
+				return false;
+			if (filters.maxMileage != null && parseMileage(car.mileage) > filters.maxMileage)
+				return false;
+
+			// String filters (only apply if not empty)
+			if (filters.condition && filters.condition !== '' && car.condition !== filters.condition)
+				return false;
+			if (filters.brand && filters.brand !== '' && car.brand !== filters.brand) return false;
+			if (filters.model && filters.model !== '' && car.model !== filters.model) return false;
+			if (filters.type && filters.type !== '' && car.type !== filters.type) return false;
+			if (filters.fuel && filters.fuel !== '' && car.fuel !== filters.fuel) return false;
+			if (filters.drivetrain && filters.drivetrain !== '' && car.drivetrain !== filters.drivetrain)
+				return false;
+
+			// Number fields
+			if (filters.year != null && car.year !== filters.year) return false;
+			if (filters.seats != null && car.seats !== filters.seats) return false;
+			if (filters.wheelSize != null && car.wheel_size !== filters.wheelSize) return false;
+
+			// Boolean filter
+			if (filters.warranty != null && filters.warranty && !car.warranty) return false;
+
+			// Features (array)
+			if (filters.features && filters.features.length > 0) {
+				for (const feat of filters.features) {
+					if (!car.features.includes(feat)) return false;
+				}
+			}
+
+			return true;
+		});
+	}
 </script>
 
 <svelte:head>
@@ -302,32 +344,61 @@
 
 <!-- Main Title -->
 <section class="p-4">
-	<h1 class="font-serif text-2xl font-bold text-gray-800 sm:text-3xl">Apis special selection</h1>
+	<h1 class="font-serif text-2xl font-bold text-gray-800 sm:text-3xl">Apis Special Selection</h1>
 </section>
+
 <!-- Brand Filter Buttons -->
-<section class="flex flex-wrap gap-2 bg-gray-50 p-4">
-	<h2 class="w-full font-semibold">Brand Filter</h2>
-	{#each brands as brand}
-		<Button
-			class={`flex items-center gap-1 rounded-sm px-3 py-1 text-sm
-        ${
-					selectedBrand === brand
-						? 'bg-blue-200 text-white hover:bg-blue-300'
-						: 'bg-gray-200 text-gray-800 hover:bg-gray-300'
-				}`}
-			onclick={() => (selectedBrand = selectedBrand === brand ? null : brand)}
-			size="sm"
+<div class="flex items-center gap-4 px-4">
+	<div class="relative mx-2 w-64">
+		<button
+			class="flex w-full items-center justify-between rounded-full border bg-white px-3 py-2"
+			on:click={() => (isOpen = !isOpen)}
 		>
-			<img src={`/image/${brand.toLowerCase()}.png`} alt={brand} class=" max-h-8 max-w-13" />
-			<!-- {#if brand !== 'Jaecoo' && brand !== 'Omoda' && brand !== 'Proton'}
-				{brand}
-			{/if} -->
-		</Button>
-	{/each}
-	{#if selectedBrand != null}
-		<Button onclick={() => (selectedBrand = null)} size="xs">Reset</Button>
-	{/if}
-</section>
+			{#if selectedBrand}
+				<div class="flex items-center gap-2">
+					<img
+						src={`/image/${selectedBrand.toLowerCase()}.png`}
+						alt={selectedBrand}
+						class="h-5 w-5"
+					/>
+					<span>{selectedBrand}</span>
+				</div>
+			{:else}
+				<span class="text-gray-500">Select a brand</span>
+			{/if}
+			<span class="ml-auto">▼</span>
+		</button>
+
+		<!-- Dropdown menu -->
+		{#if isOpen}
+			<div class="absolute z-10 mt-1 w-full rounded border bg-white shadow">
+				{#each brands as brand}
+					<button
+						type="button"
+						class="flex w-full items-center gap-2 px-3 py-2 hover:bg-gray-100 focus:outline-none"
+						on:click={() => {
+							selectedBrand = brand;
+							isOpen = false;
+						}}
+					>
+						<img src={`/image/${brand.toLowerCase()}.png`} alt={brand} class="h-5 w-5" />
+						<span>{brand}</span>
+					</button>
+				{/each}
+			</div>
+		{/if}
+	</div>
+
+	<Button onclick={() => (openFilter = true)} class="rounded-full bg-gray-500 px-2 py-2 text-white">
+		<Funnel /> Filter
+	</Button>
+</div>
+
+<DrawerFilter bind:open={openFilter} onApply={handleApply} {brands} />
+
+{#if selectedBrand != null}
+	<Button onclick={() => (selectedBrand = null)} size="xs">Reset</Button>
+{/if}
 
 <!-- Sort Button -->
 <section class="flex gap-2 bg-gray-50 p-4">
