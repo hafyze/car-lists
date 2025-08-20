@@ -274,7 +274,13 @@
 			wheel_size: 19,
 			engine: { displacement: 2.0, cylinders: 4, hp: 256, nm: 390 },
 			warranty: true,
-			features: ['Hands-free Power Boot', 'Panoramic Roof', 'Wireless Phone Charging', '540 HD Panoramic Camera', 'BSM']
+			features: [
+				'Hands-free Power Boot',
+				'Panoramic Roof',
+				'Wireless Phone Charging',
+				'540 HD Panoramic Camera',
+				'BSM'
+			]
 		}
 	];
 	let sortOrder: 'high' | 'low' = 'high';
@@ -287,8 +293,6 @@
 	let selectedForCompare: number[] = [];
 	let selectedBrand: string | null = null;
 
-
-
 	const brands = Array.from(new Set(cars.map((car) => car.brand)));
 </script>
 
@@ -298,9 +302,7 @@
 
 <!-- Main Title -->
 <section class="p-4">
-	<h1 class="text-2xl font-bold text-gray-800 sm:text-3xl font-serif">
-		Apis special selection
-	</h1>
+	<h1 class="font-serif text-2xl font-bold text-gray-800 sm:text-3xl">Apis special selection</h1>
 </section>
 <!-- Brand Filter Buttons -->
 <section class="flex flex-wrap gap-2 bg-gray-50 p-4">
@@ -337,10 +339,10 @@
 	</button>
 </section>
 
-<section class="flex flex-col gap-4 p-4">
+<section class="mx-auto grid max-w-7xl grid-cols-1 gap-6 p-4 sm:grid-cols-2 lg:grid-cols-3">
 	{#each sortedCars.filter((car) => !selectedBrand || car.brand === selectedBrand) as car}
 		<Card
-			class="relative flex flex-col items-start gap-4 rounded-lg p-4 shadow-md transition-shadow duration-200 hover:shadow-lg sm:flex-row"
+			class="relative flex flex-col items-start gap-4 rounded-lg p-4 shadow-md transition-shadow duration-200 hover:shadow-lg "
 		>
 			<!-- Warranty Badge -->
 			{#if car.warranty}
@@ -358,10 +360,10 @@
 			<div class="flex min-w-0 flex-1 flex-col justify-between">
 				<!-- Price & Mileage Row -->
 				<div class="mb-2 flex items-center justify-between">
-					<h2 class="text-xl font-bold text-green-600">
+					<h2 class="truncate text-xl font-bold text-green-600">
 						RM{car.price.toLocaleString()}
 					</h2>
-					<p class="ml-auto pl-20 text-sm text-gray-500">Mileage: {car.mileage}</p>
+					<p class="text-sm text-gray-500">Mileage: {car.mileage}</p>
 				</div>
 
 				<!-- Model & Condition -->
