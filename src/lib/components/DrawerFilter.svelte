@@ -56,6 +56,23 @@
 		});
 		open = false;
 	}
+	
+	function resetFilters() {
+		brand = null;
+		model = null;
+		minPrice = null;
+		maxPrice = null;
+		maxMileage = null;
+		condition = null;
+		year = null;
+		type = null;
+		seats = null;
+		fuel = null;
+		drivetrain = null;
+		wheelSize = null;
+		warranty = null;
+		features = [];
+	}
 </script>
 
 <Drawer bind:open aria-labelledby="drawer-label">
@@ -212,6 +229,13 @@
 			</select>
 		</label>
 
-		<Button class="w-full bg-green-600 text-white" onclick={applyFilters}>Apply Filters</Button>
+		<div class="flex items-center justify-between mb-4">
+			<Button class="w-1/2 bg-gray-300 text-gray-700 mx-6" onclick={resetFilters}>
+				Reset
+			</Button>
+			<Button class="w-1/2 bg-green-600 text-white" onclick={applyFilters}>
+				Apply
+			</Button>
+		</div>
 	</div>
 </Drawer>
