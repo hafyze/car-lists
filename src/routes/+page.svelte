@@ -2,7 +2,8 @@
 	import DrawerFilter from '$lib/components/DrawerFilter.svelte';
 	import { Card, Button, Checkbox } from 'flowbite-svelte';
 	import { Fuel, Cog, Car, Users, Circle, Droplet, Funnel } from 'lucide-svelte';
-	import { cars } from '$lib/data/cars' 
+	import { cars } from '$lib/data/cars'
+	import { CaretDownSolid, CaretUpSolid, FilterDollarOutline, FilterDollarSolid,  } from 'flowbite-svelte-icons'
 
 	const conditionColors: Record<string, string> = {
 		New: 'bg-green-100 text-green-800',
@@ -69,12 +70,12 @@
 </svelte:head>
 
 <!-- Main Title -->
-<section class="p-4">
+<section class="p-4 md: text-center">
 	<h1 class="font-serif text-2xl font-bold text-gray-800 sm:text-3xl">Apis Special Selection</h1>
 </section>
 
 <!-- Brand Filter Buttons -->
-<div class="flex items-center gap-4 px-4">
+<div class="flex items-center gap-4 px-4 md:flex-row md:justify-center">
 	<div class="relative mx-2 w-64">
 		<button
 			class="flex w-full items-center justify-between rounded-full border bg-white px-3 py-2"
@@ -120,20 +121,32 @@
 	</Button>
 </div>
 
+<!-- {#if selectedBrand != null}
+	<Button onclick={() => (selectedBrand = null)} size="xs">Reset</Button>
+{/if} -->
+
 <DrawerFilter bind:open={openFilter} onApply={handleApply} {brands} />
 
-{#if selectedBrand != null}
-	<Button onclick={() => (selectedBrand = null)} size="xs">Reset</Button>
-{/if}
-
-<!-- Sort Button -->
-<section class="flex gap-2 bg-gray-50 p-4">
+<!-- Filter + Reset + Sort Row -->
+<section class="flex items-center justify-between px-4 py-2 bg-gray-50">
 	<button
-		class="rounded bg-gray-200 px-3 py-1 hover:bg-gray-300"
+		class="flex items-center gap-1 rounded-full bg-gray-200 px-2 py-2 hover:bg-gray-300"
+		title="sort by price"
 		on:click={() => (sortOrder = sortOrder === 'high' ? 'low' : 'high')}
 	>
-		Sort Price: {sortOrder === 'high' ? 'High → Low' : 'Low → High'}
+		<FilterDollarOutline class="" />
+		{#if sortOrder === 'high'}
+			<CaretDownSolid class="" />
+		{:else}
+			<CaretUpSolid class="" />
+		{/if}
 	</button>
+
+	<div class="flex items-center gap-2">
+		{#if selectedBrand != null}
+			<Button onclick={() => (selectedBrand = null)} size="xs">Reset</Button>
+		{/if}
+	</div>
 </section>
 
 <section class="mx-auto grid max-w-7xl grid-cols-1 gap-6 p-4 sm:grid-cols-2 lg:grid-cols-3">
