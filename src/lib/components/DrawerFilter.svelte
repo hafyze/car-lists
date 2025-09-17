@@ -2,7 +2,23 @@
 	import { Drawer, Button } from 'flowbite-svelte';
 
 	export let open: boolean;
-	export let onApply: (filters: { minPrice: number | null; maxMileage: number | null }) => void;
+	export let onApply: (filters: { 
+		minPrice: number | null; 
+		maxPrice: number | null;
+		minMileage: number | null; 
+		maxMileage: number | null;
+		condition: string | null;
+		brand: string | null;
+		model: string | null;
+		year: number | null;
+		type: string | null;
+		seats: number | null;
+		fuel: string | null;
+		drivetrain: string | null;
+		wheelSize: number | null;
+		warranty: boolean | null;
+		features: string[];
+	}) => void;
 	export let brands: string[] = [];
 	let minPrice: number | null = null;
 	let maxPrice: number | null = null;
@@ -38,7 +54,7 @@
 			warranty,
 			features
 		});
-		open = false; // close drawer after applying
+		open = false;
 	}
 </script>
 
