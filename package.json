@@ -34,6 +34,7 @@
 	},
 	"dependencies": {
 		"lucide-svelte": "^0.540.0",
+		"mongodb": "^6.20.0",
 		"mongoose": "^8.17.2"
 	}
 }

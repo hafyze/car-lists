@@ -2,9 +2,18 @@
 	import DrawerFilter from '$lib/components/DrawerFilter.svelte';
 	import { Card, Button, Checkbox } from 'flowbite-svelte';
 	import { Fuel, Cog, Car, Users, Circle, Droplet, Funnel } from 'lucide-svelte';
-	import { cars } from '$lib/data/cars'
 	import { CaretDownSolid, CaretUpSolid, FilterDollarOutline, FilterDollarSolid,  } from 'flowbite-svelte-icons'
+	import type { PageData } from "./$types";
+  	import type { CarSpec } from "$lib/types/car";
+	import { onMount } from 'svelte';
 
+	export let data: PageData;
+	let cars: CarSpec[] = data.cars;
+	let filteredCars: CarSpec[] = [...cars];
+
+	onMount(() => {
+		console.log("Cars: ", cars)
+	})
 	const conditionColors: Record<string, string> = {
 		New: 'bg-green-100 text-green-800',
 		Used: 'bg-yellow-100 text-yellow-800',
@@ -21,7 +30,6 @@
 	let selectedBrand: string | null = null;
 	let isOpen = false;
 	let openFilter = false;
-	let filteredCars: any[] = [...cars];
 
 	const brands = Array.from(new Set(cars.map((car) => car.brand)));
 
@@ -40,7 +48,7 @@
 				return false;
 			if (filters.brand && filters.brand !== '' && car.brand !== filters.brand) return false;
 			if (filters.model && filters.model !== '' && car.model !== filters.model) return false;
-			if (filters.type && filters.type !== '' && car.type !== filters.type) return false;
+			if (filters.type && filters.type !== '' && car.bodyType !== filters.type) return false;
 			if (filters.fuel && filters.fuel !== '' && car.fuel !== filters.fuel) return false;
 			if (filters.drivetrain && filters.drivetrain !== '' && car.drivetrain !== filters.drivetrain)
 				return false;
@@ -48,7 +56,7 @@
 			// Number fields
 			if (filters.year != null && car.year !== filters.year) return false;
 			if (filters.seats != null && car.seats !== filters.seats) return false;
-			if (filters.wheelSize != null && car.wheel_size !== filters.wheelSize) return false;
+			if (filters.wheelSize != null && car.wheelSize !== filters.wheelSize) return false;
 
 			// Boolean filter
 			if (filters.warranty != null && filters.warranty && !car.warranty) return false;
@@ -181,7 +189,7 @@
 					<h3 class="truncate text-lg font-semibold">
 						{car.brand}
 						{car.model}
-						{car.engine.displacement.toFixed(1)}cc ({car.year})
+						{car.engine?.displacement?.toFixed(1) ?? 'N/A'}cc ({car.year})
 					</h3>
 					<p class="mt-1 text-sm">
 						Condition:
@@ -197,9 +205,7 @@
 				<div class="mb-1">
 					<p class="text-sm font-semibold">Engine:</p>
 					<p class="pl-1 text-sm text-gray-700">
-						Fuel: {car.fuel} | {car.engine.displacement}cc, {car.engine.hp}HP, {car.engine.nm}Nm,
-						{car.engine.cylinders} Cylinders
-					</p>
+						Fuel: {car.fuel} | {car.engine?.displacement}cc, {car.engine?.power}HP, {car.engine?.torque}Nm					</p>
 				</div>
 
 				<hr />
@@ -213,13 +219,13 @@
 						<Cog class="mr-2 h-4 w-4 text-gray-600" /> Drivetrain: {car.drivetrain}
 					</p>
 					<p class="flex items-center text-sm text-gray-500">
-						<Car class="mr-2 h-4 w-4 text-gray-600" /> Body Type: {car.type}
+						<Car class="mr-2 h-4 w-4 text-gray-600" /> Body Type: {car.bodyType}
 					</p>
 					<p class="flex items-center text-sm text-gray-500">
 						<Users class="mr-2 h-4 w-4 text-gray-600" /> Seats: {car.seats}
 					</p>
 					<p class="flex items-center text-sm text-gray-500">
-						<Circle class="mr-2 h-4 w-4 text-gray-600" /> Wheel Size: {car.wheel_size} inch
+						<Circle class="mr-2 h-4 w-4 text-gray-600" /> Wheel Size: {car.wheelSize} inch
 					</p>
 					<p class="flex items-center text-sm text-gray-500">
 						<Droplet class="mr-2 h-4 w-4 text-gray-600" /> Fuel consumption: {car.fuel_consumption}
