@@ -33,8 +33,12 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"@aws-sdk/credential-providers": "^3.901.0",
+		"@mongodb-js/zstd": "^2.0.1",
+		"aws4": "^1.13.2",
 		"lucide-svelte": "^0.540.0",
 		"mongodb": "^6.20.0",
+		"mongodb-client-encryption": "^6.5.0",
 		"mongoose": "^8.17.2"
 	}
 }
