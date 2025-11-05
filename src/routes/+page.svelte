@@ -6,10 +6,16 @@
 	import type { PageData } from "./$types";
   	import type { CarSpec } from "$lib/types/car";
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 	let cars: CarSpec[] = data.cars;
 	let filteredCars: CarSpec[] = [...cars];
+
+	function gotoFinance() {
+		goto("../tools/finance")
+	}
+	// export let carsDataOff: CarSpec[] = cars
 
 	onMount(() => {
 		console.log("Cars: ", cars)
@@ -82,6 +88,11 @@
 	<h1 class="font-serif text-2xl font-bold text-gray-800 sm:text-3xl">Apis Special Selection</h1>
 </section>
 
+<Button onclick={gotoFinance}></Button>
+
+<!-- {#if selectedBrand != null}
+	<Button onclick={() => (selectedBrand = null)} size="xs">Reset</Button>
+{/if} -->
 <!-- Brand Filter Buttons -->
 <div class="flex items-center gap-4 px-4 md:flex-row md:justify-center">
 	<div class="relative mx-2 w-64">
@@ -128,34 +139,6 @@
 		<Funnel /> Filter
 	</Button>
 </div>
-
-<!-- {#if selectedBrand != null}
-	<Button onclick={() => (selectedBrand = null)} size="xs">Reset</Button>
-{/if} -->
-
-<DrawerFilter bind:open={openFilter} onApply={handleApply} {brands} />
-
-<!-- Filter + Reset + Sort Row -->
-<section class="flex items-center justify-between px-4 py-2 bg-gray-50">
-	<button
-		class="flex items-center gap-1 rounded-full bg-gray-200 px-2 py-2 hover:bg-gray-300"
-		title="sort by price"
-		on:click={() => (sortOrder = sortOrder === 'high' ? 'low' : 'high')}
-	>
-		<FilterDollarOutline class="" />
-		{#if sortOrder === 'high'}
-			<CaretDownSolid class="" />
-		{:else}
-			<CaretUpSolid class="" />
-		{/if}
-	</button>
-
-	<div class="flex items-center gap-2">
-		{#if selectedBrand != null}
-			<Button onclick={() => (selectedBrand = null)} size="xs">Reset</Button>
-		{/if}
-	</div>
-</section>
 
 <section class="mx-auto grid max-w-7xl grid-cols-1 gap-6 p-4 sm:grid-cols-2 lg:grid-cols-3">
 	{#each sortedCars.filter((car) => !selectedBrand || car.brand === selectedBrand) as car}

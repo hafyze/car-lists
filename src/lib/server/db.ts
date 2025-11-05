@@ -31,6 +31,7 @@ if (process.env.NODE_ENV === 'development') {
 	clientPromise = globalThis._mongoClientPromise;
 } else {
 	clientPromise = client.connect();
+	console.log("cP: ", clientPromise)
 }
 
 export async function getCars(): Promise<(CarSpec & { _id: string })[]> {
