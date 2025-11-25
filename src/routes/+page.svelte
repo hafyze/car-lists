@@ -1,7 +1,7 @@
 <script lang="ts">
 	import DrawerFilter from '$lib/components/DrawerFilter.svelte';
 	import { Card, Button, Checkbox } from 'flowbite-svelte';
-	import { Fuel, Cog, Car, Users, Circle, Droplet, Funnel } from 'lucide-svelte';
+	import { Fuel, Cog, Car, Users, Circle, Droplet, Funnel, Calculator } from 'lucide-svelte';
 	import { CaretDownSolid, CaretUpSolid, FilterDollarOutline, FilterDollarSolid,  } from 'flowbite-svelte-icons'
 	import type { PageData } from "./$types";
   	import type { CarSpec } from "$lib/types/car";
@@ -17,9 +17,9 @@
 	}
 	// export let carsDataOff: CarSpec[] = cars
 
-	onMount(() => {
-		console.log("Cars: ", cars)
-	})
+	// onMount(() => {
+	// 	console.log("Cars: ", cars)
+	// })
 	const conditionColors: Record<string, string> = {
 		New: 'bg-green-100 text-green-800',
 		Used: 'bg-yellow-100 text-yellow-800',
@@ -88,7 +88,6 @@
 	<h1 class="font-serif text-2xl font-bold text-gray-800 sm:text-3xl">Apis Special Selection</h1>
 </section>
 
-<Button onclick={gotoFinance}></Button>
 
 <!-- {#if selectedBrand != null}
 	<Button onclick={() => (selectedBrand = null)} size="xs">Reset</Button>
@@ -138,6 +137,8 @@
 	<Button onclick={() => (openFilter = true)} class="rounded-full bg-gray-500 px-2 py-2 text-white">
 		<Funnel /> Filter
 	</Button>
+	
+	<Button onclick={gotoFinance} class="flex"><Calculator /></Button>
 </div>
 
 <section class="mx-auto grid max-w-7xl grid-cols-1 gap-6 p-4 sm:grid-cols-2 lg:grid-cols-3">
